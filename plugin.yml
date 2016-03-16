@@ -1,0 +1,7 @@
+name: MinigameBase
+main: me.gET.sv.MGBase.main.Main
+version: 1.0
+
+commands:
+   minigame:
+      usage: /minigame

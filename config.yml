@@ -1,0 +1,13 @@
+ArenaLength: 0
+Arena0:
+   Name: test
+   World: world
+   Spawn:
+      x:
+      Y:
+      z:
+   Lobby:
+      x:
+      Y:
+      z:
+
