@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 name: ElytraRace
 main: me.gET.sv.ElytraRace.main.Main
 version: 1.0
 
+depend: [LocationsHolder]
+
 commands:
    elytra:
       usage: /elytra
-=======
-name: MinigameBase
-main: me.gET.sv.MGBase.main.Main
-version: 1.0
 
-commands:
-   minigame:
-      usage: /minigame
->>>>>>> f2b45dd8e37d6b0ae69bf651e3a6f8ff09d079b5

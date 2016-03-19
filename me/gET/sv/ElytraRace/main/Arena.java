@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import locationsholder.LocationsHolder;
 import me.gET.sv.ElytraRace.game.Game;
 import me.gET.sv.ElytraRace.lobby.Lobby;
 
@@ -93,9 +94,11 @@ public class Arena {
 	}
 	public void setSpawn(Location s){
 		this.spawn = s;
+		LocationsHolder.put("location:Elytra-" + getName() + "-spawn", s);
 	}
 	public void setLobby(Location l){
 		this.lobbyLocation = l;
+		LocationsHolder.put("location:Elytra-" + getName() + "-lobby", l);
 	}
 	public void setPlayers(ArrayList<UUID> p){
 		this.players = p;

@@ -3,7 +3,7 @@ package me.gET.sv.ElytraRace.game;
 public class GameTime implements Runnable{
 	
 	private static Game game;
-	private int time = 120;
+	private int time = 0;
 	
 	@Override
 	public void run(){

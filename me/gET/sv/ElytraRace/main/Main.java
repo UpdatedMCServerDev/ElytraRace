@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import locationsholder.LocationsHolder;
 import me.gET.sv.ElytraRace.game.GameListener;
 
 
@@ -21,22 +22,16 @@ public class Main extends JavaPlugin{
 	public void onEnable(){
 		Bukkit.getServer().getPluginManager().registerEvents(new GameListener(), this);
 		
+		if(config.get("ArenaLenth") == null){
+			config.set("ArenaLenth", 0);
+		}
+		
 		for(int i = 0; i < config.getInt("ArenaLength") + 1; i++){
-			new Arena(
-					 config.getString("Arena" + i + ".Name"), 
-					 new Location(
-							 Bukkit.getServer().getWorld(config.getString("Arena" + config.getInt("ArenaLength") + ".World")), 
-							 config.getDouble("Arena" + i + ".Spawn.x"), 
-							 config.getDouble("Arena" + i + ".Spawn.y"), 
-							 config.getDouble("Arena" + i + ".Spawn.z")
-							 ), 
-					 new Location(
-							 Bukkit.getServer().getWorld(config.getString("Arena" + config.getInt("ArenaLength") + ".World")),
-							 config.getDouble("Arena" + i + ".Lobby.x"), 
-							 config.getDouble("Arena" + i + ".Lobby.y"), 
-							 config.getDouble("Arena" + i + ".Lobby.z")
-						     )
-					);
+			Arena a = new Arena(config.getString("Arena" + i + ".Name"), null, null);
+			
+			a.setLobby((Location) LocationsHolder.variables.get("location:Elytra-" + a.getName() + "-lobby"));
+			a.setSpawn((Location) LocationsHolder.variables.get("location:Elytra-" + a.getName() + "-spawn"));
+			
 		}
 		
 		System.out.println("Arenas Carregadas com sucesso!");
@@ -80,7 +75,7 @@ public class Main extends JavaPlugin{
 			
 			if(args[0].equalsIgnoreCase("create")){
 				if(!p.isOp()) { p.sendMessage("Você não tem permissão para isso."); return true; }
-				if(args.length <= 2) return false;
+				if(args.length < 2) return false;
 				
 				if(args[1].equalsIgnoreCase("setSpawn")){
 					if(Arena.getArena(args[2]) == null){ p.sendMessage("Arena não encontrada!"); return true; }

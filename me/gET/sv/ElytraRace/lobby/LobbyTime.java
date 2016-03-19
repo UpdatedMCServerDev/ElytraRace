@@ -30,6 +30,7 @@ public class LobbyTime implements Runnable{
 		if(lobby.getArena().getPlayersLenth() == 1){
 			if(!(lobby.getArena().getGameState() == GameState.INITING)){
 				lobby.getArena().setGameState(GameState.INITING);
+				time = 30;
 				countDown = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Countdown(lobby), 0, 20);
 			}
 		}
