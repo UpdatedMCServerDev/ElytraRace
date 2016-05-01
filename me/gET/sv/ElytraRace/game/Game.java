@@ -1,13 +1,14 @@
 package me.gET.sv.ElytraRace.game;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import locationsholder.LocationsHolder;
 import me.gET.sv.ElytraRace.main.Arena;
 import me.gET.sv.ElytraRace.main.Main;
-import me.gET.sv.SpawnPlugin.main.Spawn;
 
 public class Game {
 
@@ -71,7 +72,7 @@ public class Game {
 		
 		for(Player p : Bukkit.getServer().getOnlinePlayers()){
 			if(arena.getPlayers().contains(p.getUniqueId())){
-				p.teleport(Spawn.getSpawn());
+				p.teleport((Location) LocationsHolder.get("location:compass-33"));
 				removeScoreboard(p);
 			}
 		}
